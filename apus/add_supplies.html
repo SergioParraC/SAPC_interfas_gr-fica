@@ -1,0 +1,74 @@
+<div id="header"></div>
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-6">
+                <h3 class="mt-3">Agregar Insumo</h3>
+                <form>
+                    <label for="suppliesType" class="form-label">Ingresar tipo de insumo</label>
+                    <input class="form-control" list="datalistTypeSupplies" id="suppliesType">
+                    <datalist id="datalistTypeSupplies">
+                        <option value="1. Equipo y transporte">
+                        <option value="2. Materiales">
+                        <option value="3. Mano de obra">
+                    </datalist>
+                    <label for="codSupplies" class="form-label">Código</label>
+                    <input class="form-control" id="codSupplies">
+                    
+                    <label for="descrSupplies" class="form-label">Descripción</label>
+                    <input type="email" class="form-control" id="nameSupplies">
+                    <label for="codSupplies" class="form-label">Unidad</label>
+                    <input class="form-control" id="undSupplies" list="unitsSupplies">
+                    <datalist id="unitsSupplies">
+                        <option value="Und">
+                        <option value="M2">
+                        <option value="M3">
+                        <option value="Hr">
+                        <option value="Ml">
+                        <option value="Kg">
+                        <option value="Lb">
+                        <option value="Día">
+                        <option value="Rollo">
+                    </datalist>
+
+                    <label for="CantInsumo" class="form-label">Valor</label>
+                    <textarea class="form-control" id="precio" rows="1" oninput="formatPrice(this)"></textarea>
+                    
+                    <button type="submit" class="btn btn-outline-primary mt-3">Añadir</button>
+                </form>
+              
+            </div>
+            
+
+        </div>
+    </div>
+    
+<div id="footer"></div>
+
+</div>
+<script src="../loadContend.js"></script>
+<script>    
+    loadHeader("Agregar insumo");
+    loadFooter();
+    function formatPrice(input) {
+        // Obtener el valor actual del textarea
+        const value = input.value;
+      
+        // Solo permitir números
+        input.value = value.replace(/[^0-9]/g, '');
+      
+        // Si el valor no está vacío, formatear como precio
+        if (value !== '') {
+          const formattedValue = parseFloat(input.value).toLocaleString('es-ES', {
+            style: 'currency',
+            currency: 'COP',
+            minimumFractionDigits: 0,
+          });
+      
+          // Si el valor formateado es diferente al valor actual, actualizar el textarea
+          if (formattedValue !== value) {
+            input.value = formattedValue;
+          }
+        }
+      }
+</script>
